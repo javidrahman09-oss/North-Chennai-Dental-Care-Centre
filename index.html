@@ -3,261 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>North Chennai Dental Care Centre | Premium Dental Care</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>North Chennai Dental Care Centre | Premium Dental Care · Tiruvottiyur</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --navy:#0a1628;
-  --navy2:#0e1e38;
-  --navy3:#162848;
+  --navy:#060f1e;
+  --navy2:#0b1829;
+  --navy3:#101f35;
+  --navy4:#162540;
   --gold:#c9a84c;
-  --gold2:#e8c86a;
-  --gold3:#f5e0a0;
-  --white:#ffffff;
-  --offwhite:#f8f6f1;
-  --muted:#a8b4c8;
-  --text:#1a2640;
-  --light:#e8edf5;
+  --gold2:#e2c470;
+  --gold3:#f5e2a8;
+  --gold-dim:rgba(201,168,76,0.12);
+  --gold-border:rgba(201,168,76,0.22);
+  --white:#fff;
+  --offwhite:#f9f7f2;
+  --muted:#8a9ab5;
+  --muted2:#6b7d96;
+  --text:#1c2940;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);}
-.nav-logo{display:flex;align-items:center;gap:12px;}
-.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:10px;display:flex;align-items:center;justify-content:center;}
-.nav-logo-icon svg{width:24px;height:24px;}
-.nav-brand{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.2;}
-.nav-brand span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.3s;letter-spacing:0.5px;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{background:var(--gold);color:var(--navy);padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.5px;transition:all 0.3s;}
-.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s;}
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
 
-/* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.08) 0%,transparent 60%),linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;}
+/* ─── CURSOR ─── */
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:screen;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(6,15,30,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);transition:all .4s;}
+nav.scrolled{height:64px;background:rgba(6,15,30,0.98);}
+.nav-logo{display:flex;align-items:center;gap:13px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-icon svg{width:22px;height:22px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;line-height:1.15;color:var(--white);}
+.nav-brand em{display:block;font-family:'Outfit',sans-serif;font-style:normal;font-size:10px;font-weight:500;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;letter-spacing:.4px;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:11px 26px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.4px;transition:all .3s;white-space:nowrap;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,0.4);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:all .3s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(6,15,30,0.98);backdrop-filter:blur(20px);padding:28px 6%;z-index:999;border-bottom:1px solid var(--gold-border);}
+.mobile-menu.open{display:flex;flex-direction:column;gap:20px;}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:16px;font-weight:500;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.mobile-menu .nav-cta{text-align:center;margin-top:8px;}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden;gap:60px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(201,168,76,0.07) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(14,31,58,0.8) 0%,transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#0a1628 100%);z-index:0;}
+.hero-noise{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");z-index:0;}
+.hero-lines{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.hero-lines svg{width:100%;height:100%;opacity:.06;}
 .hero-content{position:relative;z-index:2;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;}
-.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
-h1{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,66px);font-weight:700;line-height:1.1;margin-bottom:24px;}
-h1 em{font-style:normal;color:var(--gold);}
-.hero-subtitle{font-size:17px;color:var(--muted);line-height:1.7;max-width:480px;margin-bottom:40px;font-weight:300;}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:15px 32px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4);}
-.btn-secondary{border:1.5px solid rgba(201,168,76,0.4);color:var(--gold);padding:15px 32px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;}
-.btn-secondary:hover{background:rgba(201,168,76,0.08);border-color:var(--gold);}
-.hero-stats{display:flex;gap:40px;}
-.stat{border-left:2px solid rgba(201,168,76,0.3);padding-left:20px;}
-.stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;}
-.stat-label{font-size:12px;color:var(--muted);margin-top:4px;font-weight:400;letter-spacing:0.5px;}
-.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;}
-.hero-card-wrap{position:relative;width:100%;max-width:480px;}
-.hero-main-card{background:linear-gradient(145deg,var(--navy2),var(--navy3));border:1px solid rgba(201,168,76,0.2);border-radius:24px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.4);}
-.hero-card-img{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#1a3060,#0d1f3d);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.tooth-svg{width:160px;opacity:0.9;}
-.hero-card-body{padding:24px;}
-.hero-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:8px;}
-.hero-card-sub{font-size:13px;color:var(--muted);}
-.rating-row{display:flex;align-items:center;gap:10px;margin-top:14px;}
-.stars{display:flex;gap:2px;}
-.star{color:var(--gold);font-size:16px;}
-.rating-text{font-size:13px;color:var(--muted);}
-.rating-num{font-weight:600;color:var(--white);font-size:15px;}
-.float-card{position:absolute;background:var(--navy2);border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.3);}
-.float-card-1{top:-20px;right:-30px;min-width:160px;}
-.float-card-2{bottom:-24px;left:-30px;min-width:180px;}
-.float-icon{width:36px;height:36px;border-radius:10px;background:rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
-.float-val{font-size:22px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold);}
-.float-label{font-size:11px;color:var(--muted);margin-top:2px;}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(201,168,76,0.1);border:1px solid var(--gold-border);padding:8px 18px;border-radius:100px;font-size:11.5px;font-weight:600;color:var(--gold);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:32px;animation:fadeSlideUp .8s ease both;}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:badgePulse 2s infinite;}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.6);}50%{box-shadow:0 0 0 6px rgba(201,168,76,0);}}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,5.5vw,78px);font-weight:700;line-height:1.05;margin-bottom:26px;animation:fadeSlideUp .8s .1s ease both;}
+h1 em{font-style:italic;color:var(--gold);display:block;}
+.hero-subtitle{font-size:16.5px;color:var(--muted);line-height:1.75;max-width:500px;margin-bottom:44px;font-weight:300;animation:fadeSlideUp .8s .2s ease both;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px;animation:fadeSlideUp .8s .3s ease both;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:16px 34px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;box-shadow:0 4px 28px rgba(201,168,76,0.3);letter-spacing:.3px;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(201,168,76,0.45);}
+.btn-secondary{border:1.5px solid rgba(201,168,76,0.35);color:var(--gold);padding:16px 34px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;}
+.btn-secondary:hover{background:rgba(201,168,76,0.09);border-color:rgba(201,168,76,.6);}
+.hero-stats{display:flex;gap:0;animation:fadeSlideUp .8s .4s ease both;}
+.stat{padding:0 36px 0 0;border-right:1px solid rgba(255,255,255,0.08);}
+.stat:first-child{padding-left:0;}
+.stat:last-child{border-right:none;}
+.stat+.stat{padding-left:36px;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.stat-label{font-size:11.5px;color:var(--muted);margin-top:5px;font-weight:400;letter-spacing:.6px;text-transform:uppercase;}
 
-/* MARQUEE */
-.marquee-wrap{background:var(--gold);padding:14px 0;overflow:hidden;}
-.marquee-track{display:flex;gap:0;animation:marquee 30s linear infinite;width:max-content;}
+/* ─── HERO VISUAL ─── */
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;animation:fadeSlideUp .8s .2s ease both;}
+.hero-card-wrap{position:relative;width:100%;max-width:460px;margin:0 auto;}
+.hero-main-card{background:linear-gradient(150deg,rgba(22,37,64,.9),rgba(11,24,41,.95));border:1px solid var(--gold-border);border-radius:28px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.03);backdrop-filter:blur(4px);}
+.hero-card-top{padding:30px 30px 24px;position:relative;}
+.hero-card-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0e1e38,#1a2e52);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:24px;}
+.hero-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.06),transparent);}
+.tooth-gfx{width:180px;height:180px;position:relative;}
+.tooth-gfx svg{width:100%;height:100%;}
+.hero-card-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.hero-card-info .title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:4px;}
+.hero-card-info .sub{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.open-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:100px;padding:5px 12px;font-size:11px;color:#4ade80;font-weight:600;white-space:nowrap;}
+.open-dot{width:5px;height:5px;background:#4ade80;border-radius:50%;animation:badgePulse 2s infinite;}
+.hero-card-footer{background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);padding:18px 30px;display:flex;align-items:center;justify-content:space-between;}
+.rating-row{display:flex;align-items:center;gap:8px;}
+.stars{color:var(--gold);letter-spacing:1px;font-size:14px;}
+.rating-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);}
+.rating-count{font-size:12px;color:var(--muted);}
+.hero-card-cta{background:var(--gold);color:var(--navy);padding:10px 18px;border-radius:8px;font-size:12.5px;font-weight:700;text-decoration:none;transition:all .25s;white-space:nowrap;}
+.hero-card-cta:hover{background:var(--gold2);transform:translateY(-1px);}
+
+/* floating pills */
+.float-pill{position:absolute;background:var(--navy3);border:1px solid var(--gold-border);border-radius:14px;padding:14px 18px;box-shadow:0 16px 48px rgba(0,0,0,.4);backdrop-filter:blur(8px);}
+.float-pill-1{top:-28px;right:-20px;display:flex;align-items:center;gap:10px;animation:floatA 4s ease-in-out infinite;}
+.float-pill-2{bottom:-22px;left:-24px;animation:floatB 4.5s ease-in-out infinite;}
+@keyframes floatA{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes floatB{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+.pill-icon{width:36px;height:36px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.pill-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);line-height:1;}
+.pill-label{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap{background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));padding:13px 0;overflow:hidden;}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;width:max-content;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.marquee-item{display:inline-flex;align-items:center;gap:10px;padding:0 28px;color:var(--navy);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
-.marquee-dot{width:4px;height:4px;border-radius:50%;background:rgba(10,22,40,0.4);}
+.marquee-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;color:var(--navy);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.marquee-sep{width:3px;height:3px;border-radius:50%;background:rgba(10,22,40,0.35);}
 
-/* SERVICES */
-.section{padding:100px 5%;}
-.section-tag{display:inline-block;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,50px);font-weight:700;line-height:1.15;margin-bottom:16px;}
-.section-sub{font-size:16px;color:var(--muted);line-height:1.7;max-width:560px;font-weight:300;}
-.section-header{margin-bottom:64px;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.service-card{background:linear-gradient(145deg,var(--navy2),var(--navy3));border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:32px;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer;}
-.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.06),transparent);opacity:0;transition:opacity 0.4s;}
-.service-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+/* ─── SECTIONS COMMON ─── */
+.section{padding:110px 6%;}
+.section-tag{display:inline-block;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;position:relative;padding-left:24px;}
+.section-tag::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:14px;height:1px;background:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.2vw,56px);font-weight:700;line-height:1.1;margin-bottom:18px;}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.75;max-width:560px;font-weight:300;}
+.section-header{margin-bottom:70px;}
+
+/* ─── SERVICES ─── */
+.services-section{background:var(--navy2);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.service-card{background:linear-gradient(150deg,rgba(22,37,64,.7),rgba(11,24,41,.8));border:1px solid rgba(255,255,255,0.06);border-radius:22px;padding:34px;transition:all .4s;position:relative;overflow:hidden;cursor:pointer;}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.01));opacity:0;transition:opacity .4s;}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:center;transition:transform .4s;}
+.service-card:hover{transform:translateY(-7px);border-color:var(--gold-border);box-shadow:0 24px 64px rgba(0,0,0,.35);}
 .service-card:hover::before{opacity:1;}
-.service-icon{width:56px;height:56px;border-radius:14px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:24px;}
-.service-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:12px;}
-.service-desc{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
-.service-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;font-weight:500;margin-top:20px;text-decoration:none;}
-.service-link svg{transition:transform 0.3s;}
-.service-card:hover .service-link svg{transform:translateX(4px);}
+.service-card:hover::after{transform:scaleX(1);}
+.service-icon-wrap{width:58px;height:58px;border-radius:16px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:26px;font-size:22px;transition:transform .3s;}
+.service-card:hover .service-icon-wrap{transform:scale(1.1) rotate(3deg);}
+.service-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:13px;}
+.service-desc{font-size:14px;color:var(--muted);line-height:1.72;font-weight:300;}
+.service-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;font-weight:500;margin-top:22px;text-decoration:none;opacity:.7;transition:opacity .25s;}
+.service-link svg{transition:transform .3s;}
+.service-card:hover .service-link{opacity:1;}
+.service-card:hover .service-link svg{transform:translateX(5px);}
 
-/* WHY US */
-.why-section{background:var(--navy2);padding:100px 5%;}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.why-visual{position:relative;}
-.why-big-card{background:linear-gradient(145deg,var(--navy3),#1a2e52);border:1px solid rgba(201,168,76,0.2);border-radius:24px;padding:40px;position:relative;}
-.why-big-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:8px;}
-.why-big-sub{color:var(--muted);font-size:14px;margin-bottom:32px;}
-.why-metric-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
-.why-metric{background:rgba(255,255,255,0.04);border-radius:14px;padding:20px;}
-.why-metric-val{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold);}
-.why-metric-label{font-size:12px;color:var(--muted);margin-top:4px;}
-.why-bar-label{font-size:13px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
-.why-bar-wrap{height:6px;background:rgba(255,255,255,0.08);border-radius:3px;margin-bottom:14px;overflow:hidden;}
-.why-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:barGrow 1.5s ease-out forwards;}
-@keyframes barGrow{from{width:0;}to{width:var(--w);}}
-.why-float{position:absolute;top:-20px;right:-20px;background:var(--gold);border-radius:16px;padding:16px 20px;color:var(--navy);}
-.why-float-val{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;}
-.why-float-label{font-size:11px;font-weight:600;letter-spacing:1px;}
-.why-features{display:flex;flex-direction:column;gap:28px;}
-.why-feature{display:flex;gap:20px;align-items:flex-start;}
-.why-feature-icon{width:48px;height:48px;min-width:48px;border-radius:12px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;}
-.why-feature-title{font-size:17px;font-weight:600;margin-bottom:6px;}
-.why-feature-desc{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300;}
+/* ─── WHY US ─── */
+.why-section{background:var(--navy);padding:110px 6%;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;}
+.why-card-outer{position:relative;}
+.why-main-card{background:linear-gradient(150deg,var(--navy3),#1b2e50);border:1px solid var(--gold-border);border-radius:28px;padding:44px;position:relative;overflow:hidden;}
+.why-main-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07),transparent 70%);}
+.why-card-header{margin-bottom:36px;}
+.why-card-header h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:6px;}
+.why-card-header p{font-size:13px;color:var(--muted);}
+.why-metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:34px;}
+.why-metric{background:rgba(255,255,255,0.04);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.05);}
+.why-metric-val{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1;}
+.why-metric-label{font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.4px;}
+.why-bar-row{margin-bottom:16px;}
+.why-bar-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:7px;}
+.why-bar-labels span:last-child{font-weight:600;color:var(--white);}
+.why-bar-bg{height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;}
+.why-bar-fill{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width 1.4s ease;}
+.why-badge{position:absolute;top:-18px;right:24px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:14px;padding:16px 22px;color:var(--navy);}
+.why-badge-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.why-badge-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.why-features{display:flex;flex-direction:column;gap:32px;}
+.why-feat{display:flex;gap:22px;align-items:flex-start;}
+.why-feat-icon{width:50px;height:50px;min-width:50px;border-radius:14px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .3s;}
+.why-feat:hover .why-feat-icon{transform:scale(1.08);}
+.why-feat-title{font-size:17px;font-weight:600;margin-bottom:7px;}
+.why-feat-desc{font-size:14px;color:var(--muted);line-height:1.68;font-weight:300;}
 
-/* PROCESS */
-.process-section{padding:100px 5%;background:var(--navy);}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;position:relative;}
-.process-line{position:absolute;top:32px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.2));}
-.process-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px;position:relative;}
-.step-num{width:64px;height:64px;border-radius:50%;background:var(--navy2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);margin-bottom:28px;position:relative;z-index:2;}
-.step-title{font-size:16px;font-weight:600;margin-bottom:10px;}
-.step-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+/* ─── PROCESS ─── */
+.process-section{background:var(--navy2);padding:110px 6%;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px;position:relative;}
+.process-connector{position:absolute;top:34px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(201,168,76,0.3) 100%);}
+.process-connector::after{content:'';position:absolute;right:-6px;top:-4px;width:0;height:0;border-left:8px solid rgba(201,168,76,0.3);border-top:4px solid transparent;border-bottom:4px solid transparent;}
+.process-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;position:relative;}
+.step-circle{width:68px;height:68px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--gold);margin-bottom:28px;position:relative;z-index:2;transition:all .35s;}
+.process-step:hover .step-circle{background:var(--gold);color:var(--navy);box-shadow:0 0 30px rgba(201,168,76,0.4);}
+.step-title{font-size:16px;font-weight:600;margin-bottom:11px;}
+.step-desc{font-size:13.5px;color:var(--muted);line-height:1.65;}
 
-/* TESTIMONIALS */
-.reviews-section{background:var(--navy2);padding:100px 5%;}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px;}
-.review-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:32px;transition:transform 0.3s;}
-.review-card:hover{transform:translateY(-4px);}
+/* ─── REVIEWS ─── */
+.reviews-section{background:var(--navy);padding:110px 6%;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px;}
+.review-card{background:linear-gradient(150deg,rgba(22,37,64,.6),rgba(11,24,41,.7));border:1px solid rgba(255,255,255,0.07);border-radius:22px;padding:34px;transition:all .35s;position:relative;overflow:hidden;}
+.review-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:center;transition:transform .4s;}
+.review-card:hover{transform:translateY(-5px);border-color:var(--gold-border);}
+.review-card:hover::after{transform:scaleX(1);}
 .review-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
-.review-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy);font-size:16px;}
+.review-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--navy);font-size:17px;flex-shrink:0;}
 .review-name{font-size:15px;font-weight:600;}
-.review-date{font-size:12px;color:var(--muted);}
-.review-stars{display:flex;gap:2px;margin-bottom:16px;}
-.review-star{color:var(--gold);font-size:14px;}
-.review-text{font-size:14px;color:var(--muted);line-height:1.7;font-style:italic;font-weight:300;}
-.review-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);padding:5px 12px;border-radius:100px;font-size:11px;color:var(--gold);font-weight:600;margin-top:16px;}
+.review-date{font-size:12px;color:var(--muted);margin-top:2px;}
+.review-stars{color:var(--gold);letter-spacing:2px;font-size:13px;margin-bottom:15px;}
+.review-text{font-size:14px;color:var(--muted);line-height:1.74;font-style:italic;font-weight:300;}
+.review-verified{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--gold-border);padding:5px 12px;border-radius:100px;font-size:11px;color:var(--gold);font-weight:600;margin-top:18px;}
+.reviews-cta{text-align:center;margin-top:50px;}
 
-/* CONTACT */
-.contact-section{padding:100px 5%;background:var(--navy);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.contact-info{display:flex;flex-direction:column;gap:28px;margin-top:40px;}
+/* ─── TESTIMONIALS FEATURE ─── */
+.testimonial-feature{background:linear-gradient(135deg,var(--navy3),#1b2e50);border:1px solid var(--gold-border);border-radius:28px;padding:50px;margin-top:40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+.tf-quote{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;line-height:1.45;color:var(--white);margin-bottom:22px;}
+.tf-quote::before{content:'\201C';font-size:60px;color:var(--gold);line-height:0;vertical-align:-20px;margin-right:4px;opacity:.6;}
+.tf-author{display:flex;align-items:center;gap:12px;}
+.tf-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--navy);font-size:15px;}
+.tf-author-name{font-size:15px;font-weight:600;}
+.tf-author-sub{font-size:12px;color:var(--muted);}
+.tf-rating-block{text-align:center;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:18px;padding:28px 36px;min-width:140px;}
+.tf-big-rating{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:var(--gold);line-height:1;}
+.tf-stars{color:var(--gold);font-size:16px;letter-spacing:2px;margin-bottom:6px;}
+.tf-reviews-count{font-size:12px;color:var(--muted);}
+
+/* ─── CONTACT ─── */
+.contact-section{background:var(--navy2);padding:110px 6%;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
+.contact-details{margin-top:44px;display:flex;flex-direction:column;gap:26px;}
 .contact-item{display:flex;gap:18px;align-items:flex-start;}
-.contact-icon{width:48px;height:48px;min-width:48px;border-radius:12px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
-.contact-label{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.contact-val{font-size:15px;font-weight:500;line-height:1.5;}
-.contact-form{background:linear-gradient(145deg,var(--navy2),var(--navy3));border:1px solid rgba(201,168,76,0.15);border-radius:24px;padding:40px;}
-.form-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:8px;}
-.form-sub{font-size:14px;color:var(--muted);margin-bottom:32px;}
+.ci-icon{width:48px;height:48px;min-width:48px;border-radius:13px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:17px;transition:transform .3s;}
+.contact-item:hover .ci-icon{transform:scale(1.08);}
+.ci-label{font-size:11px;color:var(--gold);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+.ci-val{font-size:15px;font-weight:500;line-height:1.55;color:var(--white);}
+.ci-val a{color:inherit;text-decoration:none;}
+.ci-val a:hover{color:var(--gold);}
+.contact-form-card{background:linear-gradient(150deg,var(--navy3),#1b2e50);border:1px solid var(--gold-border);border-radius:28px;padding:44px;}
+.form-head{margin-bottom:34px;}
+.form-head h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;margin-bottom:8px;}
+.form-head p{font-size:14px;color:var(--muted);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-group{margin-bottom:20px;}
-.form-group label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:8px;letter-spacing:0.5px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 16px;color:var(--white);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.3s;}
-.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.25);}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(201,168,76,0.5);}
-.form-group select option{background:var(--navy2);}
-.form-group textarea{resize:vertical;min-height:110px;}
-.form-submit{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border:none;padding:16px;border-radius:10px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.3s;letter-spacing:0.5px;}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4);}
-.success-msg{display:none;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px;color:var(--gold);font-size:14px;text-align:center;margin-top:16px;}
+.fg{margin-bottom:20px;}
+.fg label{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-bottom:8px;letter-spacing:.4px;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 16px;color:var(--white);font-size:14px;font-family:'Outfit',sans-serif;outline:none;transition:border-color .25s,background .25s;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(201,168,76,.5);background:rgba(255,255,255,.05);}
+.fg select option{background:var(--navy3);}
+.fg textarea{resize:vertical;min-height:108px;}
+.form-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border:none;padding:17px;border-radius:10px;font-size:15px;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:all .3s;letter-spacing:.4px;}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(201,168,76,.4);}
+.form-btn:disabled{background:rgba(201,168,76,.3);color:var(--gold);cursor:not-allowed;transform:none;box-shadow:none;}
+.form-success{display:none;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);border-radius:10px;padding:16px;color:#4ade80;font-size:14px;text-align:center;margin-top:16px;}
 
-/* HOURS */
-.hours-section{background:var(--navy2);padding:80px 5%;}
-.hours-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.hours-table{margin-top:32px;}
-.hours-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+/* ─── HOURS ─── */
+.hours-section{background:var(--navy);padding:90px 6%;}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;}
+.hours-table{margin-top:36px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:15px 24px;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);transition:background .25s;}
 .hours-row:last-child{border-bottom:none;}
+.hours-row:hover{background:rgba(201,168,76,0.06);}
 .hours-day{font-size:14px;font-weight:500;}
-.hours-time{font-size:14px;color:var(--muted);}
-.hours-open{color:var(--gold);font-weight:600;}
-.map-embed{border-radius:20px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);}
-.map-placeholder{background:linear-gradient(145deg,var(--navy3),#1a2e52);height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
-.map-pin{font-size:40px;}
-.map-addr{font-size:14px;color:var(--muted);text-align:center;max-width:280px;line-height:1.6;}
-.map-btn{background:var(--gold);color:var(--navy);padding:12px 24px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.3s;display:inline-block;margin-top:8px;}
-.map-btn:hover{background:var(--gold2);}
+.hours-time{font-size:14px;color:var(--gold);font-weight:600;}
+.hours-today{background:rgba(201,168,76,0.1)!important;border-bottom-color:var(--gold-border)!important;}
+.hours-today .hours-day{color:var(--gold);}
+.map-area{display:flex;flex-direction:column;gap:20px;}
+.map-card{background:linear-gradient(150deg,var(--navy3),#1b2e50);border:1px solid var(--gold-border);border-radius:22px;overflow:hidden;}
+.map-visual{height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#0d1e38,#172844);position:relative;overflow:hidden;}
+.map-visual::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(201,168,76,0.04) 40px,rgba(201,168,76,0.04) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(201,168,76,0.04) 40px,rgba(201,168,76,0.04) 41px);}
+.map-pin-icon{font-size:44px;position:relative;z-index:2;animation:pinBounce 2.5s ease-in-out infinite;}
+@keyframes pinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.map-addr-text{font-size:13.5px;color:var(--muted);text-align:center;max-width:280px;line-height:1.6;position:relative;z-index:2;}
+.map-link{background:var(--gold);color:var(--navy);padding:12px 26px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .25s;display:inline-block;position:relative;z-index:2;}
+.map-link:hover{background:var(--gold2);transform:translateY(-1px);}
+.hours-cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.hcta-btn{padding:17px;border-radius:14px;text-align:center;text-decoration:none;font-weight:700;font-size:14px;display:block;transition:all .3s;}
+.hcta-call{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
+.hcta-call:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.4);}
+.hcta-book{background:var(--navy3);border:1px solid var(--gold-border);color:var(--white);}
+.hcta-book:hover{background:rgba(201,168,76,0.1);}
 
-/* FOOTER */
-footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding:60px 5% 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-.footer-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:12px;}
-.footer-brand span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
-.footer-tagline{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:24px;}
-.footer-social{display:flex;gap:10px;}
-.social-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.3s;text-decoration:none;color:var(--muted);}
-.social-btn:hover{background:rgba(201,168,76,0.15);border-color:rgba(201,168,76,0.3);color:var(--gold);}
-.footer-col h4{font-size:13px;font-weight:600;color:var(--white);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
-.footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.3s;font-weight:300;}
+/* ─── FOOTER ─── */
+footer{background:var(--navy);border-top:1px solid var(--gold-border);padding:70px 6% 36px;}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px;}
+.footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;margin-bottom:6px;}
+.footer-brand-sub{font-size:10.5px;font-weight:600;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.footer-tagline{font-size:14px;color:var(--muted);line-height:1.74;font-weight:300;margin-bottom:26px;}
+.footer-socials{display:flex;gap:10px;}
+.social-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;transition:all .3s;text-decoration:none;color:var(--muted);}
+.social-btn:hover{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold);}
+.footer-col h4{font-size:12px;font-weight:600;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .25s;font-weight:300;}
 .footer-links a:hover{color:var(--gold);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:13px;color:var(--muted);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.footer-copy{font-size:12.5px;color:var(--muted2);}
 .footer-accent{color:var(--gold);}
 
-/* FLOATING CTA */
-.float-cta{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
-.float-btn{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);padding:14px 20px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 8px 30px rgba(201,168,76,0.4);transition:all 0.3s;}
-.float-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,168,76,0.5);}
-.float-btn-phone{background:var(--navy2);color:var(--white);border:1px solid rgba(201,168,76,0.3);}
-.float-btn-phone:hover{background:var(--navy3);}
+/* ─── FLOATING CTA ─── */
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:990;display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.float-btn{display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:100px;font-size:13.5px;font-weight:700;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.35);transition:all .3s;font-family:'Outfit',sans-serif;}
+.float-btn-book{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);box-shadow:0 8px 30px rgba(201,168,76,.4);}
+.float-btn-book:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(201,168,76,.5);}
+.float-btn-call{background:rgba(11,24,41,.95);color:var(--white);border:1px solid var(--gold-border);backdrop-filter:blur(8px);}
+.float-btn-call:hover{transform:translateY(-3px);background:var(--navy3);}
 
-/* MOBILE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding-top:100px;}
-  .hero-visual{display:none;}
-  .services-grid{grid-template-columns:1fr 1fr;}
-  .why-grid{grid-template-columns:1fr;}
-  .process-steps{grid-template-columns:1fr 1fr;gap:32px;}
-  .process-line{display:none;}
-  .reviews-grid{grid-template-columns:1fr;}
-  .contact-grid{grid-template-columns:1fr;}
-  .hours-inner{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .form-row{grid-template-columns:1fr;}
-  .hero-stats{gap:20px;}
-}
-@media(max-width:600px){
-  .services-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;}
-  .float-cta{bottom:16px;right:16px;}
-}
-
-/* SCROLL ANIMATIONS */
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+/* ─── ANIMATIONS ─── */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
 .fade-up.visible{opacity:1;transform:translateY(0);}
+.fade-up:nth-child(2){transition-delay:.1s;}
+.fade-up:nth-child(3){transition-delay:.2s;}
+.fade-up:nth-child(4){transition-delay:.3s;}
+.fade-up:nth-child(5){transition-delay:.1s;}
+.fade-up:nth-child(6){transition-delay:.2s;}
 
-/* OPEN BADGE */
-.open-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:100px;padding:4px 12px;font-size:12px;color:#4ade80;font-weight:600;margin-top:8px;}
-.open-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:110px;gap:0;}
+  .hero-visual{display:none;}
+  .hero-stats{gap:0;flex-wrap:wrap;}
+  .stat{padding:12px 28px 12px 0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .stat:last-child{border-bottom:none;}
+  .stat+.stat{padding-left:0;}
+  .why-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  .process-connector{display:none;}
+  .reviews-grid{grid-template-columns:1fr 1fr;}
+  .testimonial-feature{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .hours-grid{grid-template-columns:1fr;}
+  .nav-links{display:none!important;}
+  .hamburger{display:flex;}
+}
+@media(max-width:640px){
+  .services-grid{grid-template-columns:1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .float-cta{bottom:16px;right:16px;}
+  .float-btn span.label-text{display:none;}
+  .hero{padding:100px 5% 60px;}
+  .section{padding:80px 5%;}
+  .why-section,.process-section,.reviews-section,.contact-section,.hours-section{padding:80px 5%;}
+  .why-badge{right:12px;}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
+<!-- Custom Cursor (desktop only) -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C8 2 5 5 5 9c0 3 1 5 2 7l1 4c0 1 1 2 2 2h4c1 0 2-1 2-2l1-4c1-2 2-4 2-7 0-4-3-7-7-7z"/>
-        <path d="M9 12c0-1.7.9-3 3-3s3 1.3 3 3"/>
+        <path d="M12 2C8.5 2 6 5 6 8.5c0 2.5.8 4.5 2 6.5l1.5 5c.2.6.8 1 1.5 1h2c.7 0 1.3-.4 1.5-1l1.5-5c1.2-2 2-4 2-6.5C18 5 15.5 2 12 2z"/>
+        <path d="M9 9c0-1.7 1.3-3 3-3s3 1.3 3 3"/>
       </svg>
     </div>
-    <div class="nav-brand">North Chennai Dental<span>Care Centre</span></div>
-  </div>
+    <div class="nav-brand">North Chennai Dental<em>Care Centre · Tiruvottiyur</em></div>
+  </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#why-us">Why Us</a></li>
@@ -266,22 +373,47 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
     <li><a href="#hours">Hours</a></li>
   </ul>
   <a href="tel:07401054157" class="nav-cta">📞 Book Now</a>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#why-us" onclick="closeMenu()">Why Choose Us</a>
+  <a href="#reviews" onclick="closeMenu()">Patient Reviews</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#hours" onclick="closeMenu()">Clinic Hours</a>
+  <a href="tel:07401054157" class="nav-cta" style="text-align:center;">📞 074010 54157</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-lines">
+    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="rg1" cx="70%" cy="40%" r="50%">
+          <stop offset="0%" stop-color="#c9a84c" stop-opacity=".15"/>
+          <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="980" cy="400" r="320" fill="url(#rg1)"/>
+      <circle cx="980" cy="400" r="320" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="8,16" opacity=".2"/>
+      <circle cx="980" cy="400" r="240" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".12"/>
+      <circle cx="980" cy="400" r="160" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".1"/>
+    </svg>
+  </div>
+
   <div class="hero-content">
-    <div class="hero-badge"><span class="hero-badge-dot"></span>Trusted Since Inception · Tiruvottiyur, Chennai</div>
-    <h1>Your Smile,<br>Our <em>Masterpiece.</em></h1>
-    <p class="hero-subtitle">Premium dental care combining advanced technology with compassionate treatment — because every patient deserves the very best.</p>
+    <div class="hero-badge"><span class="badge-dot"></span>Tiruvottiyur, North Chennai · Est. Clinic</div>
+    <h1>Your Smile, Our<em>Masterpiece.</em></h1>
+    <p class="hero-subtitle">Premium dental care combining advanced technology with genuine compassion — because every patient deserves the very best.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Book Appointment
       </a>
       <a href="tel:07401054157" class="btn-secondary">
@@ -290,199 +422,229 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
       </a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">4.8★</div><div class="stat-label">Google Rating</div></div>
-      <div class="stat"><div class="stat-num">111+</div><div class="stat-label">Happy Reviews</div></div>
-      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Treatments</div></div>
+      <div class="stat"><div class="stat-num" data-target="4.8" data-decimal="1">0</div><div class="stat-label">Google Rating</div></div>
+      <div class="stat"><div class="stat-num" data-target="111" data-suffix="+">0</div><div class="stat-label">Happy Reviews</div></div>
+      <div class="stat"><div class="stat-num" data-target="15" data-suffix="+">0</div><div class="stat-label">Treatments Offered</div></div>
     </div>
   </div>
+
   <div class="hero-visual">
     <div class="hero-card-wrap">
+      <div class="float-pill float-pill-1">
+        <div class="pill-icon">🏆</div>
+        <div><div class="pill-val">Top Rated</div><div class="pill-label">In Tiruvottiyur</div></div>
+      </div>
       <div class="hero-main-card">
-        <div class="hero-card-img">
-          <svg class="tooth-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="70" rx="60" ry="50" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.4)" stroke-width="2"/>
-            <ellipse cx="70" cy="65" rx="20" ry="16" fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
-            <ellipse cx="130" cy="65" rx="20" ry="16" fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
-            <path d="M60 100 Q65 150 80 160 Q90 165 95 150 Q100 135 105 150 Q110 165 120 160 Q135 150 140 100" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.4)" stroke-width="2"/>
-            <circle cx="100" cy="68" r="8" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.6)" stroke-width="1"/>
-            <text x="100" y="188" text-anchor="middle" fill="rgba(201,168,76,0.6)" font-size="11" font-family="DM Sans" letter-spacing="3">DENTAL EXCELLENCE</text>
-          </svg>
-        </div>
-        <div class="hero-card-body">
-          <div class="hero-card-title">North Chennai Dental Care</div>
-          <div class="hero-card-sub">936 Thiruvottiyur High Rd, Kaladipet, Chennai 600019</div>
-          <div class="open-badge"><span class="open-dot"></span> Open Now · Closes 11 PM</div>
-          <div class="rating-row">
-            <div class="stars">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <div class="hero-card-top">
+          <div class="hero-card-img">
+            <div class="tooth-gfx">
+              <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="toothGlow" cx="50%" cy="45%" r="50%">
+                    <stop offset="0%" stop-color="#c9a84c" stop-opacity=".25"/>
+                    <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+                  </radialGradient>
+                  <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <ellipse cx="100" cy="75" rx="64" ry="52" fill="url(#toothGlow)" filter="url(#glow)"/>
+                <ellipse cx="100" cy="75" rx="64" ry="52" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
+                <ellipse cx="68" cy="68" rx="22" ry="18" fill="rgba(201,168,76,0.18)" stroke="rgba(201,168,76,0.55)" stroke-width="1"/>
+                <ellipse cx="132" cy="68" rx="22" ry="18" fill="rgba(201,168,76,0.18)" stroke="rgba(201,168,76,0.55)" stroke-width="1"/>
+                <path d="M52 106 Q60 160 78 172 Q90 178 97 162 Q100 148 103 162 Q110 178 122 172 Q140 160 148 106" fill="rgba(201,168,76,0.13)" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
+                <circle cx="100" cy="74" r="10" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.7)" stroke-width="1.5" filter="url(#glow)"/>
+                <text x="100" y="200" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-size="10" font-family="Outfit" letter-spacing="3" font-weight="600">DENTAL EXCELLENCE</text>
+              </svg>
             </div>
-            <span class="rating-num">4.8</span>
-            <span class="rating-text">/ 111 reviews</span>
+          </div>
+          <div class="hero-card-meta">
+            <div class="hero-card-info">
+              <div class="title">North Chennai Dental Care</div>
+              <div class="sub">936, Thiruvottiyur High Rd, Kaladipet</div>
+              <div class="sub" style="margin-top:4px;">Chennai 600019</div>
+              <div class="open-pill" style="margin-top:10px;"><span class="open-dot"></span>Open Now · Closes 11 PM</div>
+            </div>
           </div>
         </div>
+        <div class="hero-card-footer">
+          <div class="rating-row">
+            <div class="stars">★★★★★</div>
+            <div class="rating-num">4.8</div>
+            <div class="rating-count">/ 111 reviews</div>
+          </div>
+          <a href="#contact" class="hero-card-cta">Book Now →</a>
+        </div>
       </div>
-      <div class="float-card float-card-1">
-        <div class="float-icon">🏆</div>
-        <div class="float-val">Top Rated</div>
-        <div class="float-label">Dental Clinic in Thiruvottiyur</div>
-      </div>
-      <div class="float-card float-card-2">
-        <div class="float-icon">💎</div>
-        <div class="float-val">Affordable</div>
-        <div class="float-label">Premium care at the best price</div>
+      <div class="float-pill float-pill-2">
+        <div class="pill-icon">💎</div>
+        <div><div class="pill-val">Affordable</div><div class="pill-label">Premium care, best price</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
+<!-- ─── MARQUEE ─── -->
 <div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-dot"></span>General Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Orthodontics</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Laser Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Root Canal Treatment</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Dental Implants</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Teeth Whitening</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Oral Surgery</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Cosmetic Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Pediatric Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Gum Treatment</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>General Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Orthodontics</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Laser Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Root Canal Treatment</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Dental Implants</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Teeth Whitening</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Oral Surgery</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Cosmetic Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Pediatric Dentistry</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Gum Treatment</span>
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="marquee-item"><span class="marquee-sep"></span>General Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Orthodontics</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Laser Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Root Canal Treatment</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Dental Implants</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Teeth Whitening</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Oral Surgery</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Cosmetic Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Pediatric Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Gum Treatment</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Dental X-Ray</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Smile Makeover</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>General Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Orthodontics</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Laser Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Root Canal Treatment</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Dental Implants</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Teeth Whitening</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Oral Surgery</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Cosmetic Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Pediatric Dentistry</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Gum Treatment</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Dental X-Ray</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Smile Makeover</span>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="section" id="services">
+<!-- ─── SERVICES ─── -->
+<section class="section services-section" id="services">
   <div class="section-header fade-up">
     <div class="section-tag">Our Treatments</div>
-    <h2 class="section-title">Comprehensive Dental<br>Services For Every Need</h2>
-    <p class="section-sub">From routine check-ups to advanced oral rehabilitation — we provide complete dental care under one roof.</p>
+    <h2 class="section-title">Comprehensive Dental<br>Services, Under One Roof</h2>
+    <p class="section-sub">From routine check-ups to advanced oral rehabilitation — complete dental care with world-class standards.</p>
   </div>
   <div class="services-grid">
     <div class="service-card fade-up">
-      <div class="service-icon">🦷</div>
+      <div class="service-icon-wrap">🦷</div>
       <div class="service-name">General Dentistry</div>
-      <p class="service-desc">Routine check-ups, cleanings, fillings, and preventive care to keep your teeth healthy and strong for life.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Routine check-ups, cleanings, fillings, and preventive care to keep your teeth strong and healthy for a lifetime.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">✨</div>
+      <div class="service-icon-wrap">✨</div>
       <div class="service-name">Teeth Whitening</div>
-      <p class="service-desc">Advanced whitening treatments to brighten your smile by several shades — safely, quickly, and effectively.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Advanced whitening treatments to brighten your smile several shades — safely, quickly, and with lasting results.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">🔬</div>
+      <div class="service-icon-wrap">🔬</div>
       <div class="service-name">Laser Dentistry</div>
-      <p class="service-desc">Cutting-edge laser treatments for painless, precise dental procedures with faster healing and minimal discomfort.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Cutting-edge laser treatments for painless, precise procedures with faster healing and minimal discomfort.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">🏗️</div>
+      <div class="service-icon-wrap">🏗️</div>
       <div class="service-name">Dental Implants</div>
-      <p class="service-desc">Permanent tooth replacement solutions that look and feel exactly like natural teeth — restore confidence in your smile.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Permanent tooth replacement solutions that look, feel and function exactly like natural teeth — restore your smile with confidence.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">📐</div>
+      <div class="service-icon-wrap">📐</div>
       <div class="service-name">Orthodontics</div>
-      <p class="service-desc">Braces and aligners to correct misaligned teeth and bite issues — for children, teens, and adults alike.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Braces and clear aligners to correct misaligned teeth and bite issues — for children, teens, and adults alike.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">🩺</div>
+      <div class="service-icon-wrap">🩺</div>
       <div class="service-name">Root Canal Treatment</div>
       <p class="service-desc">Expert endodontic therapy to save damaged teeth and relieve pain — performed with modern, comfortable techniques.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">💆</div>
+      <div class="service-icon-wrap">💆</div>
       <div class="service-name">Gum Treatment</div>
-      <p class="service-desc">Comprehensive periodontal care to treat bleeding gums, gum disease, and protect the foundation of your smile.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Comprehensive periodontal care to treat bleeding gums and gum disease — protecting the foundation of your smile.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">👶</div>
+      <div class="service-icon-wrap">👶</div>
       <div class="service-name">Pediatric Dentistry</div>
-      <p class="service-desc">Gentle, child-friendly dental care in a welcoming environment — building good oral habits from an early age.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Gentle, child-friendly dental care in a warm, welcoming environment — building great oral habits from the start.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="service-card fade-up">
-      <div class="service-icon">🎭</div>
+      <div class="service-icon-wrap">🎭</div>
       <div class="service-name">Cosmetic Dentistry</div>
-      <p class="service-desc">Veneers, bonding, and smile makeovers to enhance the aesthetics of your smile and boost your self-confidence.</p>
-      <a href="#contact" class="service-link">Book Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="service-desc">Veneers, bonding, and smile makeovers to enhance aesthetics and boost your confidence — designed just for you.</p>
+      <a href="#contact" class="service-link">Book Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- ─── WHY US ─── -->
 <section class="why-section" id="why-us">
   <div class="why-grid">
-    <div class="why-visual fade-up">
-      <div class="why-big-card">
-        <div class="why-big-title">Patient Satisfaction</div>
-        <div class="why-big-sub">Based on 111 verified Google reviews</div>
-        <div class="why-metric-row">
+    <div class="why-card-outer fade-up">
+      <div class="why-main-card">
+        <div class="why-card-header">
+          <h3>Patient Satisfaction</h3>
+          <p>Based on 111 verified Google reviews</p>
+        </div>
+        <div class="why-metrics">
           <div class="why-metric"><div class="why-metric-val">4.8</div><div class="why-metric-label">Star Rating</div></div>
           <div class="why-metric"><div class="why-metric-val">98%</div><div class="why-metric-label">Would Recommend</div></div>
         </div>
-        <div>
-          <div class="why-bar-label"><span>Patient Care</span><span>97%</span></div>
-          <div class="why-bar-wrap"><div class="why-bar" style="--w:97%"></div></div>
-          <div class="why-bar-label"><span>Treatment Quality</span><span>96%</span></div>
-          <div class="why-bar-wrap"><div class="why-bar" style="--w:96%"></div></div>
-          <div class="why-bar-label"><span>Affordable Pricing</span><span>94%</span></div>
-          <div class="why-bar-wrap"><div class="why-bar" style="--w:94%"></div></div>
-          <div class="why-bar-label"><span>Cleanliness</span><span>99%</span></div>
-          <div class="why-bar-wrap"><div class="why-bar" style="--w:99%"></div></div>
+        <div class="bars-area">
+          <div class="why-bar-row">
+            <div class="why-bar-labels"><span>Patient Care</span><span>97%</span></div>
+            <div class="why-bar-bg"><div class="why-bar-fill" data-width="97"></div></div>
+          </div>
+          <div class="why-bar-row">
+            <div class="why-bar-labels"><span>Treatment Quality</span><span>96%</span></div>
+            <div class="why-bar-bg"><div class="why-bar-fill" data-width="96"></div></div>
+          </div>
+          <div class="why-bar-row">
+            <div class="why-bar-labels"><span>Affordable Pricing</span><span>94%</span></div>
+            <div class="why-bar-bg"><div class="why-bar-fill" data-width="94"></div></div>
+          </div>
+          <div class="why-bar-row">
+            <div class="why-bar-labels"><span>Cleanliness</span><span>99%</span></div>
+            <div class="why-bar-bg"><div class="why-bar-fill" data-width="99"></div></div>
+          </div>
         </div>
       </div>
-      <div class="why-float">
-        <div class="why-float-val">#1</div>
-        <div class="why-float-label">In Tiruvottiyur</div>
+      <div class="why-badge">
+        <div class="why-badge-val">#1</div>
+        <div class="why-badge-label">Tiruvottiyur</div>
       </div>
     </div>
+
     <div class="fade-up">
       <div class="section-tag">Why Choose Us</div>
       <h2 class="section-title">The Standard of<br>Dental Excellence</h2>
-      <div class="why-features" style="margin-top:36px;">
-        <div class="why-feature">
-          <div class="why-feature-icon">🏥</div>
+      <div class="why-features" style="margin-top:40px;">
+        <div class="why-feat">
+          <div class="why-feat-icon">🏥</div>
           <div>
-            <div class="why-feature-title">Advanced Technology</div>
-            <p class="why-feature-desc">We invest in the latest dental equipment — digital X-rays, laser systems, and modern sterilization — for accurate diagnosis and comfortable treatments.</p>
+            <div class="why-feat-title">Advanced Technology</div>
+            <p class="why-feat-desc">Digital X-rays, laser systems, and modern sterilization — for accurate, safe, and comfortable treatments every time.</p>
           </div>
         </div>
-        <div class="why-feature">
-          <div class="why-feature-icon">💰</div>
+        <div class="why-feat">
+          <div class="why-feat-icon">💰</div>
           <div>
-            <div class="why-feature-title">Affordable, Transparent Pricing</div>
-            <p class="why-feature-desc">World-class dental care shouldn't break the bank. We offer competitive pricing with no hidden costs and flexible payment options.</p>
+            <div class="why-feat-title">Transparent, Affordable Pricing</div>
+            <p class="why-feat-desc">World-class dental care that doesn't break the bank — competitive pricing with no hidden costs and flexible payment options.</p>
           </div>
         </div>
-        <div class="why-feature">
-          <div class="why-feature-icon">❤️</div>
+        <div class="why-feat">
+          <div class="why-feat-icon">❤️</div>
           <div>
-            <div class="why-feature-title">Compassionate Patient Care</div>
-            <p class="why-feature-desc">Our team prioritizes your comfort and wellbeing at every step — from the first call to post-treatment follow-up, you are treated like family.</p>
+            <div class="why-feat-title">Compassionate Patient Care</div>
+            <p class="why-feat-desc">Every patient is treated like family — from your first call through post-treatment follow-up, your comfort is our priority.</p>
           </div>
         </div>
-        <div class="why-feature">
-          <div class="why-feature-icon">🕙</div>
+        <div class="why-feat">
+          <div class="why-feat-icon">🕙</div>
           <div>
-            <div class="why-feature-title">Extended Hours for Your Convenience</div>
-            <p class="why-feature-desc">Open 7 days a week until 11 PM — because dental emergencies and busy schedules don't follow a 9-to-5.</p>
+            <div class="why-feat-title">Extended Hours, 7 Days a Week</div>
+            <p class="why-feat-desc">Open daily 9 AM – 11 PM — because dental emergencies and busy schedules don't follow a 9-to-5 routine.</p>
           </div>
         </div>
       </div>
@@ -490,156 +652,176 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- ─── PROCESS ─── -->
 <section class="process-section" id="process">
-  <div class="section-header fade-up" style="text-align:center;max-width:600px;margin:0 auto 0;">
+  <div class="section-header fade-up" style="text-align:center;max-width:640px;margin:0 auto 0;">
     <div class="section-tag">How It Works</div>
     <h2 class="section-title">Your Journey to a<br>Perfect Smile</h2>
   </div>
-  <div class="process-steps">
-    <div class="process-line"></div>
+  <div class="process-grid">
+    <div class="process-connector"></div>
     <div class="process-step fade-up">
-      <div class="step-num">01</div>
+      <div class="step-circle">01</div>
       <div class="step-title">Book Appointment</div>
-      <p class="step-desc">Call us or fill our online form to schedule at a time that suits you — 7 days a week.</p>
+      <p class="step-desc">Call us or fill the form to schedule at a time that suits you — available 7 days a week.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">02</div>
+      <div class="step-circle">02</div>
       <div class="step-title">Consultation</div>
-      <p class="step-desc">Meet our expert dentist for a thorough examination and personalised treatment plan.</p>
+      <p class="step-desc">Meet our expert dentist for a thorough examination and personalised treatment plan tailored for you.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">03</div>
+      <div class="step-circle">03</div>
       <div class="step-title">Treatment</div>
-      <p class="step-desc">Receive world-class dental treatment using advanced technology in a comfortable environment.</p>
+      <p class="step-desc">Receive world-class dental care using advanced technology in a relaxed, comfortable environment.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">04</div>
+      <div class="step-circle">04</div>
       <div class="step-title">Follow-Up Care</div>
-      <p class="step-desc">We schedule follow-ups and guide you on maintaining your perfect, healthy smile at home.</p>
+      <p class="step-desc">We schedule follow-ups and guide you on maintaining your healthy, perfect smile at home.</p>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- ─── REVIEWS ─── -->
 <section class="reviews-section" id="reviews">
-  <div class="section-header fade-up" style="text-align:center;margin-left:auto;margin-right:auto;max-width:600px;">
+  <div class="section-header fade-up" style="text-align:center;max-width:640px;margin:0 auto 0;">
     <div class="section-tag">Patient Testimonials</div>
     <h2 class="section-title">What Our Patients<br>Are Saying</h2>
     <p class="section-sub" style="margin:0 auto;">Real experiences from real people who trusted us with their smiles.</p>
   </div>
+
+  <!-- Featured testimonial -->
+  <div class="testimonial-feature fade-up" style="margin-top:70px;">
+    <div>
+      <div class="tf-quote">"This is the best dental clinic in North Chennai. The doctor is brilliant, the staff are warm, and the results are absolutely life-changing. I recommend North Chennai Dental to everyone."</div>
+      <div class="tf-author">
+        <div class="tf-av">SA</div>
+        <div><div class="tf-author-name">Suresh Arumugam</div><div class="tf-author-sub">Root Canal Treatment Patient</div></div>
+      </div>
+    </div>
+    <div class="tf-rating-block">
+      <div class="tf-stars">★★★★★</div>
+      <div class="tf-big-rating">4.8</div>
+      <div class="tf-reviews-count">111 Google Reviews</div>
+    </div>
+  </div>
+
   <div class="reviews-grid">
     <div class="review-card fade-up">
       <div class="review-header">
-        <div class="review-avatar">RK</div>
+        <div class="review-av">RK</div>
         <div><div class="review-name">Rajesh Kumar</div><div class="review-date">Google Review</div></div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Excellent patient care — the staff are incredibly warm and professional. The treatment was painless and the results are amazing. Highly recommend North Chennai Dental!"</p>
-      <div class="review-badge">✓ Verified Google Review</div>
+      <p class="review-text">"Excellent patient care — the staff are incredibly warm and professional. Treatment was painless and results are amazing. Highly recommend North Chennai Dental!"</p>
+      <div class="review-verified">✓ Verified Google Review</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-header">
-        <div class="review-avatar">PM</div>
+        <div class="review-av">PM</div>
         <div><div class="review-name">Priya Mohan</div><div class="review-date">Google Review</div></div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Best dentist in Chennai! The clinic is spotlessly clean, the technology is modern, and the doctor explained every step clearly. Very affordable for the quality you get."</p>
-      <div class="review-badge">✓ Verified Google Review</div>
+      <p class="review-text">"Best dentist in Chennai! Spotlessly clean, modern technology, and the doctor explained every step clearly. Very affordable for the quality of care you receive."</p>
+      <div class="review-verified">✓ Verified Google Review</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-header">
-        <div class="review-avatar">SA</div>
-        <div><div class="review-name">Suresh Arumugam</div><div class="review-date">Google Review</div></div>
-      </div>
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"I was anxious about my root canal but the team made me completely comfortable. Absolutely no pain during or after. This is the BEST dental care centre in North Chennai!"</p>
-      <div class="review-badge">✓ Verified Google Review</div>
-    </div>
-    <div class="review-card fade-up">
-      <div class="review-header">
-        <div class="review-avatar">KD</div>
+        <div class="review-av">KD</div>
         <div><div class="review-name">Kavitha Devi</div><div class="review-date">Google Review</div></div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Came for teeth whitening and left with a smile 10 times brighter! The doctor was patient, thorough, and genuinely cared about my comfort throughout the procedure."</p>
-      <div class="review-badge">✓ Verified Google Review</div>
+      <p class="review-text">"Came for teeth whitening and left with a smile 10 times brighter! The doctor was patient, thorough, and genuinely cared about my comfort throughout."</p>
+      <div class="review-verified">✓ Verified Google Review</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-header">
-        <div class="review-avatar">MV</div>
+        <div class="review-av">MV</div>
         <div><div class="review-name">Muthu Vel</div><div class="review-date">Google Review</div></div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Excellent treatment at an affordable price. I have been to many dental clinics but this one stands out for its professionalism and genuine concern for patients. 100% recommended!"</p>
-      <div class="review-badge">✓ Verified Google Review</div>
+      <p class="review-text">"Excellent treatment at an affordable price. I have been to many dental clinics but this one stands out for professionalism and genuine concern for patients. 100% recommended!"</p>
+      <div class="review-verified">✓ Verified Google Review</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-header">
-        <div class="review-avatar">LN</div>
+        <div class="review-av">LN</div>
         <div><div class="review-name">Lakshmi Nair</div><div class="review-date">Google Review</div></div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Brought my 7-year-old here and the team was so gentle and patient with her. She actually enjoyed her dental visit! We will never go anywhere else. This place is truly special."</p>
-      <div class="review-badge">✓ Verified Google Review</div>
+      <p class="review-text">"Brought my 7-year-old and the team was so gentle and patient. She actually enjoyed her dental visit! We will never go anywhere else. This place is truly special."</p>
+      <div class="review-verified">✓ Verified Google Review</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="review-header">
+        <div class="review-av">AR</div>
+        <div><div class="review-name">Anand Rajan</div><div class="review-date">Google Review</div></div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Got my dental implants done here. The procedure was seamless, the results are perfect, and the doctor's expertise is outstanding. Worth every rupee. Highly recommend!"</p>
+      <div class="review-verified">✓ Verified Google Review</div>
     </div>
   </div>
-  <div style="text-align:center;margin-top:48px;" class="fade-up">
-    <a href="https://maps.google.com" target="_blank" class="btn-secondary" style="display:inline-flex;">View All 111 Reviews on Google ↗</a>
+  <div class="reviews-cta fade-up">
+    <a href="https://maps.google.com/search/North+Chennai+Dental+Care+Centre" target="_blank" class="btn-secondary" style="display:inline-flex;">View All 111 Reviews on Google ↗</a>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ─── CONTACT ─── -->
 <section class="contact-section" id="contact">
   <div class="contact-grid">
     <div class="fade-up">
       <div class="section-tag">Get In Touch</div>
       <h2 class="section-title">Book Your<br>Appointment Today</h2>
-      <p class="section-sub">We'd love to welcome you to our clinic. Reach out and our team will get back to you promptly.</p>
-      <div class="contact-info">
+      <p class="section-sub">We'd love to welcome you to our clinic. Our team will confirm your appointment promptly.</p>
+      <div class="contact-details">
         <div class="contact-item">
-          <div class="contact-icon">📍</div>
+          <div class="ci-icon">📍</div>
           <div>
-            <div class="contact-label">Address</div>
-            <div class="contact-val">936, Thiruvottiyur High Rd,<br>Sathiyamoorthy Nagar, Kaladipet,<br>Tiruvottiyur, Chennai 600019</div>
+            <div class="ci-label">Address</div>
+            <div class="ci-val">936, Thiruvottiyur High Rd,<br>Sathiyamoorthy Nagar, Kaladipet,<br>Tiruvottiyur, Chennai 600019</div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📞</div>
+          <div class="ci-icon">📞</div>
           <div>
-            <div class="contact-label">Phone</div>
-            <div class="contact-val"><a href="tel:07401054157" style="color:var(--white);text-decoration:none;">074010 54157</a></div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val"><a href="tel:07401054157">074010 54157</a></div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">🕐</div>
+          <div class="ci-icon">🕐</div>
           <div>
-            <div class="contact-label">Hours</div>
-            <div class="contact-val">Monday – Sunday<br>9:00 AM – 11:00 PM</div>
+            <div class="ci-label">Clinic Hours</div>
+            <div class="ci-val">Monday – Sunday<br>9:00 AM – 11:00 PM</div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">🌐</div>
+          <div class="ci-icon">🌐</div>
           <div>
-            <div class="contact-label">Find Us On</div>
-            <div class="contact-val">Google Maps · Practo · JustDial · KiVi Health</div>
+            <div class="ci-label">Find Us On</div>
+            <div class="ci-val">Google Maps · Practo · JustDial · KiVi Health</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="contact-form fade-up">
-      <div class="form-title">Send Us a Message</div>
-      <div class="form-sub">We'll confirm your appointment within a few hours.</div>
-      <div class="form-row">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="Rajesh" id="fname"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Kumar" id="lname"></div>
+
+    <div class="contact-form-card fade-up">
+      <div class="form-head">
+        <h3>Send Us a Message</h3>
+        <p>We'll confirm your appointment within a few hours.</p>
       </div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 99999 99999" id="phone"></div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com" id="email"></div>
-      <div class="form-group">
+      <div class="form-row">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Rajesh" id="fname"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar" id="lname"></div>
+      </div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 99999 99999" id="phone"></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com" id="email"></div>
+      <div class="fg">
         <label>Treatment Needed</label>
         <select id="treatment">
-          <option value="">Select a service...</option>
+          <option value="">Select a treatment...</option>
           <option>General Check-up & Cleaning</option>
           <option>Teeth Whitening</option>
           <option>Dental Implants</option>
@@ -650,60 +832,61 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
           <option>Cosmetic Dentistry</option>
           <option>Pediatric Dentistry</option>
           <option>Oral Surgery</option>
-          <option>Other</option>
+          <option>Other / Not Sure</option>
         </select>
       </div>
-      <div class="form-group"><label>Message (optional)</label><textarea placeholder="Any specific concerns or questions you'd like us to know about..." id="message"></textarea></div>
-      <button class="form-submit" onclick="submitForm()">Book My Appointment →</button>
-      <div class="success-msg" id="success">✅ Thank you! We'll confirm your appointment within 2-4 hours. See you soon!</div>
+      <div class="fg"><label>Message (optional)</label><textarea placeholder="Any specific concerns or questions you'd like us to know about..." id="message"></textarea></div>
+      <button class="form-btn" id="formBtn" onclick="submitForm()">Book My Appointment →</button>
+      <div class="form-success" id="formSuccess">✅ Thank you! We'll confirm your appointment within 2–4 hours. Looking forward to seeing you!</div>
     </div>
   </div>
 </section>
 
-<!-- HOURS -->
+<!-- ─── HOURS ─── -->
 <section class="hours-section" id="hours">
-  <div class="hours-inner">
+  <div class="hours-grid">
     <div class="fade-up">
       <div class="section-tag">Clinic Hours</div>
       <h2 class="section-title">We're Open<br>When You Need Us</h2>
-      <p class="section-sub">Extended hours every day of the week — because your dental health shouldn't wait.</p>
+      <p class="section-sub">Extended hours every single day — because your dental health should never have to wait.</p>
       <div class="hours-table">
-        <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
-        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time hours-open">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-1"><span class="hours-day">Monday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-2"><span class="hours-day">Tuesday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-3"><span class="hours-day">Wednesday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-4"><span class="hours-day">Thursday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-5"><span class="hours-day">Friday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-6"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
+        <div class="hours-row" id="row-0"><span class="hours-day">Sunday</span><span class="hours-time">9:00 AM – 11:00 PM</span></div>
       </div>
     </div>
-    <div class="fade-up">
-      <div class="map-embed">
-        <div class="map-placeholder">
-          <div class="map-pin">📍</div>
-          <p class="map-addr">936, Thiruvottiyur High Rd, Sathiyamoorthy Nagar, Kaladipet, Tiruvottiyur, Chennai 600019</p>
-          <a href="https://maps.google.com/?q=North+Chennai+Dental+Care+Centre+Tiruvottiyur" target="_blank" class="map-btn">Open in Google Maps →</a>
+    <div class="map-area fade-up">
+      <div class="map-card">
+        <div class="map-visual">
+          <div class="map-pin-icon">📍</div>
+          <p class="map-addr-text">936, Thiruvottiyur High Rd, Sathiyamoorthy Nagar, Kaladipet, Tiruvottiyur, Chennai 600019</p>
+          <a href="https://maps.google.com/?q=North+Chennai+Dental+Care+Centre+Tiruvottiyur" target="_blank" class="map-link">Open in Google Maps →</a>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
-        <a href="tel:07401054157" style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:16px;border-radius:14px;text-align:center;text-decoration:none;font-weight:700;font-size:14px;display:block;">📞 Call Now</a>
-        <a href="#contact" style="background:var(--navy3);border:1px solid rgba(201,168,76,0.3);color:var(--white);padding:16px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;font-size:14px;display:block;">📅 Book Online</a>
+      <div class="hours-cta-grid">
+        <a href="tel:07401054157" class="hcta-btn hcta-call">📞 Call Now</a>
+        <a href="#contact" class="hcta-btn hcta-book">📅 Book Online</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand">North Chennai Dental Care Centre<span>Premium Dental Care · Tiruvottiyur</span></div>
-      <p class="footer-tagline">Delivering exceptional dental care with compassion, advanced technology, and a genuine commitment to your oral health since our founding.</p>
-      <div class="footer-social">
-        <a class="social-btn" href="#" title="Facebook">f</a>
-        <a class="social-btn" href="#" title="Instagram">in</a>
-        <a class="social-btn" href="#" title="WhatsApp">W</a>
-        <a class="social-btn" href="https://maps.google.com" target="_blank" title="Google">G</a>
+      <div class="footer-brand-name">North Chennai Dental Care Centre</div>
+      <div class="footer-brand-sub">Premium Dental Care · Tiruvottiyur</div>
+      <p class="footer-tagline">Delivering exceptional dental care with compassion, advanced technology, and a genuine commitment to every patient's oral health and wellbeing.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook" aria-label="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram" aria-label="Instagram">ig</a>
+        <a class="social-btn" href="#" title="WhatsApp" aria-label="WhatsApp">W</a>
+        <a class="social-btn" href="https://maps.google.com" target="_blank" title="Google" aria-label="Google">G</a>
       </div>
     </div>
     <div class="footer-col">
@@ -715,6 +898,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
         <li><a href="#services">Root Canal</a></li>
         <li><a href="#services">Orthodontics</a></li>
         <li><a href="#services">Laser Dentistry</a></li>
+        <li><a href="#services">Gum Treatment</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -732,7 +916,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
       <ul class="footer-links">
         <li><a href="tel:07401054157">📞 074010 54157</a></li>
         <li><a href="#hours">🕐 Open till 11 PM daily</a></li>
-        <li><a href="https://maps.google.com" target="_blank">📍 View on Google Maps</a></li>
+        <li><a href="https://maps.google.com" target="_blank">📍 Google Maps</a></li>
         <li><a href="https://www.practo.com" target="_blank">Practo Profile</a></li>
         <li><a href="https://www.justdial.com" target="_blank">JustDial Listing</a></li>
       </ul>
@@ -744,45 +928,126 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);padding
   </div>
 </footer>
 
-<!-- FLOATING CTA -->
+<!-- ─── FLOATING CTA ─── -->
 <div class="float-cta">
-  <a href="tel:07401054157" class="float-btn float-btn-phone">📞 074010 54157</a>
-  <a href="#contact" class="float-btn">📅 Book Appointment</a>
+  <a href="tel:07401054157" class="float-btn float-btn-call">📞 <span class="label-text">074010 54157</span></a>
+  <a href="#contact" class="float-btn float-btn-book">📅 <span class="label-text">Book Appointment</span></a>
 </div>
 
 <script>
-// Scroll animations
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
-},{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+/* ─── CUSTOM CURSOR ─── */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+if(window.matchMedia('(pointer:fine)').matches){
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+  });
+  setInterval(()=>{
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+  },16);
+  document.querySelectorAll('a,button,.service-card,.review-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.6)';ring.style.borderColor='rgba(201,168,76,.8)';});
+    el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(201,168,76,.5)';});
+  });
+}else{cur.style.display='none';ring.style.display='none';}
 
-// Form submit
-function submitForm(){
-  const fname=document.getElementById('fname').value;
-  const phone=document.getElementById('phone').value;
-  if(!fname||!phone){alert('Please fill in at least your name and phone number.');return;}
-  document.getElementById('success').style.display='block';
-  document.querySelector('.form-submit').disabled=true;
-  document.querySelector('.form-submit').textContent='Appointment Requested ✓';
-  document.querySelector('.form-submit').style.background='rgba(201,168,76,0.3)';
-  document.querySelector('.form-submit').style.color='var(--gold)';
-}
+/* ─── NAV SCROLL ─── */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
 
-// Mobile menu toggle (basic)
+/* ─── MOBILE MENU ─── */
 function toggleMenu(){
-  const links=document.querySelector('.nav-links');
-  if(links.style.display==='flex'){links.style.display='none';}
-  else{links.style.display='flex';links.style.flexDirection='column';links.style.position='fixed';links.style.top='72px';links.style.left='0';links.style.right='0';links.style.background='rgba(10,22,40,0.98)';links.style.padding='24px 5%';links.style.gap='20px';links.style.backdropFilter='blur(12px)';}
+  const m=document.getElementById('mobileMenu'),h=document.getElementById('hamburger');
+  m.classList.toggle('open');h.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
 }
 
-// Smooth scroll offset for fixed nav
+/* ─── SMOOTH SCROLL ─── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
-    const target=document.querySelector(this.getAttribute('href'));
-    if(target){e.preventDefault();window.scrollTo({top:target.offsetTop-80,behavior:'smooth'});}
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});}
   });
 });
+
+/* ─── SCROLL ANIMATIONS ─── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('visible');
+      /* trigger bars */
+      en.target.querySelectorAll('.why-bar-fill').forEach(b=>{
+        b.style.width=b.dataset.width+'%';
+      });
+      /* trigger counters */
+      en.target.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+      obs.unobserve(en.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+/* also watch why-card for bars */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.querySelectorAll('.why-bar-fill').forEach(b=>{b.style.width=b.dataset.width+'%';});
+      barObs.unobserve(en.target);
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.why-main-card').forEach(el=>barObs.observe(el));
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounter(el){
+  const target=parseFloat(el.dataset.target);
+  const dec=parseInt(el.dataset.decimal||0);
+  const suf=el.dataset.suffix||'';
+  const dur=1600,step=16;
+  let cur=0,t=0;
+  const timer=setInterval(()=>{
+    t+=step;
+    const p=Math.min(t/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    cur=target*ease;
+    el.textContent=(dec?cur.toFixed(dec):Math.floor(cur))+suf;
+    if(p>=1){el.textContent=(dec?target.toFixed(dec):target)+suf;clearInterval(timer);}
+  },step);
+}
+/* run for stat nums already visible */
+setTimeout(()=>{
+  document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+    if(el.closest('.visible')||el.closest('.hero-content')){animateCounter(el);}
+  });
+},400);
+
+/* ─── HIGHLIGHT TODAY ─── */
+const today=new Date().getDay();
+const row=document.getElementById('row-'+today);
+if(row){row.classList.add('hours-today');const d=row.querySelector('.hours-day');if(d)d.textContent+=' (Today)';}
+
+/* ─── FORM SUBMIT ─── */
+function submitForm(){
+  const fname=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  if(!fname||!phone){
+    alert('Please fill in at least your name and phone number.');return;
+  }
+  const btn=document.getElementById('formBtn');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  setTimeout(()=>{
+    btn.textContent='✓ Appointment Requested';
+    document.getElementById('formSuccess').style.display='block';
+  },800);
+}
 </script>
 </body>
 </html>
